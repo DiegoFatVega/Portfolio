@@ -4,4 +4,9 @@ const games = require('./data/games.json')
 const app = express()
 
 const port = 3000
-console.log(games)
+
+//server
+
+app.get("/games", (req, res) => res.json(games))
+
+app.listen(port, () => console.log(`app Listen on port ${port}`))
