@@ -9,4 +9,5 @@ const port = 3000
 
 app.get("/games", (req, res) => res.json(games))
 
+console.log("Ciao")
 app.listen(port, () => console.log(`app Listen on port ${port}`))
