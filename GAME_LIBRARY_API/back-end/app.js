@@ -96,6 +96,29 @@ app.put("/games/:id", (req, res) => {
     })
 })
 
+//rotta PATCH
+app.patch("/games/:id", (req, res) => {
+    const id = parseInt(req.params.id)
+    const body = req.body
+    const gameIndex = games.findIndex(game => game.id === id)
 
+    if (gameIndex === -1) {
+        return res.status(404).json({
+            error: "il Gioco che vuoi modificare non esiste"
+        })
+    }
+
+    const updatedGame = {
+        ...games[gameIndex],
+        ...body,
+        id
+    }
+    games.splice(gameIndex, 1, updatedGame)
+
+    return res.status(200).json({
+        message: `Il gioco "${updatedGame.title}" è stato modificato con successo`,
+        game: updatedGame
+    })
+})
 //alla fine.
 app.listen(port, () => console.log(`app Listen on port ${port}`))
