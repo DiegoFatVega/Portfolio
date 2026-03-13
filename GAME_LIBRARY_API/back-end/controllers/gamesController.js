@@ -1,17 +1,10 @@
-const express = require('express')
+const games = require("../data/games.json");
 
-const games = require('./data/games.json')
-const app = express()
-app.use(express.json())//usa il metodo json di express
+function index(req, res) {
+    res.json(games)
+}
 
-const port = 3000
-
-//rotta index
-app.get("/games", (req, res) => res.json(games))
-
-
-//rotta Show
-app.get("/games/:id", (req, res) => {
+function show(req, res) {
     //prendere id
     const id = parseInt(req.params.id)
     //cerca e salva 
@@ -23,10 +16,9 @@ app.get("/games/:id", (req, res) => {
         })
     }
     res.json(game)
-})
+}
 
-//rotta Delete
-app.delete("/games/:id", (req, res) => {
+function destroy(req, res) {
     const id = parseInt(req.params.id)
     //cerchi in base all'indice e lo salvi in una variabile
     const gameIndex = games.findIndex(game => game.id === id) //se non trova -1, una misura di sciurezza, perchè .find ritorna true o false, mentre questo ritorna 1 o -1, quindi più preciso
@@ -44,11 +36,9 @@ app.delete("/games/:id", (req, res) => {
     return res.status(200).json({
         message: `Il gioco ${deletedGame.title} è stato cancellato`
     })
+}
 
-})
-
-//Rotta POST
-app.post("/games", (req, res) => {
+function store(req, res) {
     const body = req.body //corpo della richiesta
     if (!body.title) {
         return res.status(400).json({
@@ -65,11 +55,9 @@ app.post("/games", (req, res) => {
         message: "gioco aggiunto con successo",
         game: newGame
     })
+}
 
-})
-
-//Rotta PUT, modifica TUTTO l'oggetto
-app.put("/games/:id", (req, res) => {
+function update(req, res) {
     const id = parseInt(req.params.id) //sulla rotta games id adndiamo ad eseguire una funzione 
     const body = req.body
     const gameIndex = games.findIndex(game => game.id === id)
@@ -94,10 +82,9 @@ app.put("/games/:id", (req, res) => {
     return res.status(200).json({
         message: `Il gioco "${updatedGame.title}" è stato aggiornato`
     })
-})
+}
 
-//rotta PATCH, modifica solo una parte di esso
-app.patch("/games/:id", (req, res) => {//SONO VALORIIIII!! 
+function modify(req, res) {
     const id = parseInt(req.params.id)
     const body = req.body
     const gameIndex = games.findIndex(game => game.id === id) //
@@ -119,6 +106,13 @@ app.patch("/games/:id", (req, res) => {//SONO VALORIIIII!!
         message: `Il gioco "${updatedGame.title}" è stato modificato con successo`,
         game: updatedGame
     })
-})
-//alla fine.
-app.listen(port, () => console.log(`app Listen on port ${port}`))
+}
+
+module.exports = {
+    index,
+    show,
+    store,
+    update,
+    modify,
+    destroy
+}
