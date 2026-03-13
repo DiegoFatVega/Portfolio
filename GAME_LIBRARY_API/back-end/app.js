@@ -29,7 +29,7 @@ app.get("/games/:id", (req, res) => {
 app.delete("/games/:id", (req, res) => {
     const id = parseInt(req.params.id)
     //cerchi in base all'indice e lo salvi in una variabile
-    const gameIndex = games.findIndex(game => game.id === id) //se non trova -1
+    const gameIndex = games.findIndex(game => game.id === id) //se non trova -1, una misura di sciurezza, perchè .find ritorna true o false, mentre questo ritorna 1 o -1, quindi più preciso
     //controlli se la ricerca è andata a buon fine
     if (gameIndex === -1) {
         return res.status(404).json({
@@ -68,9 +68,9 @@ app.post("/games", (req, res) => {
 
 })
 
-//Rotta PUT
+//Rotta PUT, modifica TUTTO l'oggetto
 app.put("/games/:id", (req, res) => {
-    const id = parseInt(req.params.id)
+    const id = parseInt(req.params.id) //sulla rotta games id adndiamo ad eseguire una funzione 
     const body = req.body
     const gameIndex = games.findIndex(game => game.id === id)
 
@@ -96,11 +96,11 @@ app.put("/games/:id", (req, res) => {
     })
 })
 
-//rotta PATCH
-app.patch("/games/:id", (req, res) => {
+//rotta PATCH, modifica solo una parte di esso
+app.patch("/games/:id", (req, res) => {//SONO VALORIIIII!! 
     const id = parseInt(req.params.id)
     const body = req.body
-    const gameIndex = games.findIndex(game => game.id === id)
+    const gameIndex = games.findIndex(game => game.id === id) //
 
     if (gameIndex === -1) {
         return res.status(404).json({
@@ -111,7 +111,7 @@ app.patch("/games/:id", (req, res) => {
     const updatedGame = {
         ...games[gameIndex],
         ...body,
-        id
+        id //il campo id va a sovrascrivere l'eventuale campo id nel body, in modo tale che rimanga sempre quello di partenza
     }
     games.splice(gameIndex, 1, updatedGame)
 
