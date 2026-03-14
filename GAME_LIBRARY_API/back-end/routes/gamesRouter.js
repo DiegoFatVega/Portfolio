@@ -1,7 +1,7 @@
 const express = require('express')
 
 const router = express.Router()
-const games = require("../data/games.json")
+//const games = require("../data/games.json")
 
 const gamesController = require("../controllers/gamesController")
 

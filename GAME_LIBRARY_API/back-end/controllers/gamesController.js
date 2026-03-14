@@ -103,7 +103,7 @@ function modify(req, res) {
     games.splice(gameIndex, 1, updatedGame)
 
     return res.status(200).json({
-        message: `Il gioco "${updatedGame.title}" è stato modificato con successo`,
+        message: `Il gioco "${updatedGame.titolo}" è stato modificato con successo`,
         game: updatedGame
     })
 }
