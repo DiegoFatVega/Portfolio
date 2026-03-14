@@ -40,11 +40,6 @@ function destroy(req, res) {
 
 function store(req, res) {
     const body = req.body //corpo della richiesta
-    if (!body.title) {
-        return res.status(400).json({
-            message: "Attenzione! il campo titolo è obbligatorio"
-        })
-    }
     const newGameId = games[games.length - 1].id + 1 //genero id automaticamente
     const newGame = {
         id: newGameId,
@@ -65,11 +60,6 @@ function update(req, res) {
     if (gameIndex === -1) {
         return res.status(404).json({
             error: "il Gioco che vuoi modificare non esiste"
-        })
-    }
-    if (!body.title) {
-        return res.status(400).json({
-            message: "Attenzione! il campo titolo è obbligatorio"
         })
     }
     const updatedGame = {
