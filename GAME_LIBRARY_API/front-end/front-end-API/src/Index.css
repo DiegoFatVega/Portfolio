@@ -1,1 +1,21 @@
 @import url('bootstrap');
+
+main {
+    background-color: grey;
+    min-height: 900px;
+
+}
+
+footer {
+    background-color: blanchedalmond;
+}
+
+/* card css */
+
+.card {
+    background-color: white;
+
+    h3 {
+        text-align: center;
+    }
+}

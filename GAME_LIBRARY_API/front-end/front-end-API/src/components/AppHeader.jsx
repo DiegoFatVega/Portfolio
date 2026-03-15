@@ -14,9 +14,9 @@ export default function AppHeader() {
                     />
 
                     <div className='d-flex gap-3'>
-                        <a href='#' className="nav-link text-white">Option 1</a>
-                        <a href='#' className="nav-link text-white">Option 2</a>
-                        <a href='#' className="nav-link text-white">Option 3</a>
+                        <a href='#' className="nav-link text-white">Lista Giochi</a>
+                        <a href='#' className="nav-link text-white">Aggiungi</a>
+                        <a href='#' className="nav-link text-white">Altrra pagina</a>
                     </div>
                 </nav>
             </header>
