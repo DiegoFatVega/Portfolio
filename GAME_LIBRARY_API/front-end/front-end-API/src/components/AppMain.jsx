@@ -1,4 +1,6 @@
 import GameCard from "./gameCard"
+import data from "../data"
+
 
 export default function AppMain() {
     return (
@@ -7,15 +9,7 @@ export default function AppMain() {
                 <section>
                     <div className="container">
                         <div className="row">
-                            <div className="col mt-3">
-                                <GameCard title={'Red Dead Redemption 2'} />
-                            </div>
-                            <div className="col mt-3">
-                                <GameCard title={'God of War'} />
-                            </div>
-                            <div className="The Witcher 3">
-                                <GameCard title={'Red Dead Redemption 2'} />
-                            </div>
+                            {data.map(data => <GameCard title={data.title} platform={data.platforms} key={data.id} />)}
                         </div>
                     </div>
                 </section>

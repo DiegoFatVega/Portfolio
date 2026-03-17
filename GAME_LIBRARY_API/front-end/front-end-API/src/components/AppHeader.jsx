@@ -1,6 +1,22 @@
 import ControllerIcon from '../assets/game-controller-svgrepo-com.svg'
 export default function AppHeader() {
-
+    const nav_options = [
+        {
+            id: 1,
+            text: "Lista Giochi",
+            link: "#"
+        },
+        {
+            id: 2,
+            text: "Aggiungi",
+            link: "#"
+        },
+        {
+            id: 3,
+            text: "Altra Pagina",
+            link: "#"
+        },
+    ]
     return (
         <>
             <header className='bg-danger shadow-sm'>
@@ -13,10 +29,8 @@ export default function AppHeader() {
                         className="me-3"
                     />
 
-                    <div className='d-flex gap-3'>
-                        <a href='#' className="nav-link text-white">Lista Giochi</a>
-                        <a href='#' className="nav-link text-white">Aggiungi</a>
-                        <a href='#' className="nav-link text-white">Altrra pagina</a>
+                    <div className='d-flex gap-4'>
+                        {nav_options.map(option => <a key={option.id} href={option.link} className='nav-link fs-5 fw-bold text-light'>{option.text}</a>)}
                     </div>
                 </nav>
             </header>
