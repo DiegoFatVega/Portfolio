@@ -1,15 +1,11 @@
-import GameCard from "./gameCard"
-import data from "../data"
-
-
-export default function AppMain() {
+export default function AppMain({ GamesData, GameCard }) {
     return (
         <>
             <main>
                 <section>
                     <div className="container">
                         <div className="row">
-                            {data.map(data => <GameCard title={data.title} platform={data.platforms} key={data.id} />)}
+                            {GamesData.map(data => <GameCard title={data.title} platform={data.platforms} key={data.id} />)}
                         </div>
                     </div>
                 </section>
