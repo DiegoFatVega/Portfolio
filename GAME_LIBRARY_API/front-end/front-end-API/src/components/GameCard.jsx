@@ -1,6 +1,6 @@
 import rdr2 from "../assets/red-death-redemption.png"
 
-export default function gameCard({ title, platform }) {
+export default function gameCard({ title, platforms }) {
 
     return (
         <>
@@ -9,7 +9,9 @@ export default function gameCard({ title, platform }) {
                     <img src="https://picsum.photos/seed/picsum/400/500" alt="" style={{ height: '400px', width: '500' }} />
                     <h3>{title}</h3>
                     <ul>
-                        {platform.map(platform => <li key={platform}>{platform}</li>)}
+                        {platforms?.map(singlePlatform => (
+                            <li key={singlePlatform}>{singlePlatform}</li>
+                        ))}
                     </ul>
                 </div>
             </div>

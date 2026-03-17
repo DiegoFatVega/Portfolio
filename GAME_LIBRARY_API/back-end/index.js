@@ -1,8 +1,11 @@
 const express = require('express')
+const cors = require('cors')
 
 const gamesRouter = require("./routes/gamesRouter")
 
 const app = express()
+app.use(cors());
+
 app.use(express.json())//usa il metodo json di express
 
 const port = 3000

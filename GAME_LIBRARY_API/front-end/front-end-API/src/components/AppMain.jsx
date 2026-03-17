@@ -5,7 +5,7 @@ export default function AppMain({ GamesData, GameCard }) {
                 <section>
                     <div className="container">
                         <div className="row">
-                            {GamesData.map(data => <GameCard title={data.title} platform={data.platforms} key={data.id} />)}
+                            {GamesData.map(data => <GameCard title={data.title} platforms={data.platforms} key={data.id} />)}
                         </div>
                     </div>
                 </section>
